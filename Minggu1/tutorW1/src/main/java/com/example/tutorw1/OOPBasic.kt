@@ -12,8 +12,8 @@ class OOPBasic {
             return
         }
         println("\n--- DAFTAR BUKU SAAT INI ---")
-        daftarBuku.forEachIndexed { index, buku ->
-            println("${index + 1}. ${buku.infoBuku()}")
+        for (i in 0..daftarBuku.size-1){
+            println("${i + 1}. ${daftarBuku[i].infoBuku()}")
         }
     }
 
