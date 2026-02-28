@@ -11,9 +11,6 @@
         android:roundIcon="@android:drawable/btn_star_big_on"
         android:supportsRtl="true"
         android:theme="@style/Theme.Minggu1">
-        <activity
-            android:name=".MainActivity"
-            android:exported="false"/>
     </application>
 
 </manifest>
