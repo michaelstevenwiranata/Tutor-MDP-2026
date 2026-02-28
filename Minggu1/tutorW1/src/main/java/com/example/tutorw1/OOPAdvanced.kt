@@ -94,9 +94,22 @@ class OOPAdvanced {
             return
         }
 
+
         println("\n--- HISTORY PENDAPATAN PART ---")
-        history.forEachIndexed { index, log ->
-            println("${index + 1}. [${log.timestamp}] Mendapatkan ${log.part.nama}")
+        var filteredHistory = listOf<ScavengeHistory>()
+        println("\n Filter berdasarkan? ")
+        println("\n 1. Kokpit \n 2. Lambung \n 3. Mesin \n 4. Sayap \n 5. Semua")
+        when (scanner.nextLine()) {
+            "1" -> filteredHistory = history.filter { it.part is KokpitPart }
+            "2" -> filteredHistory = history.filter { it.part is LambungPart }
+            "3" -> filteredHistory = history.filter { it.part is MesinPart }
+            "4" -> filteredHistory = history.filter { it.part is SayapPart }
+            "5" -> filteredHistory = history.map { it.copy() }
+            else -> {println("Perintah tidak dimengerti oleh sistem."); return;}
+        }
+
+        filteredHistory.forEach { h ->
+            println(" [${h.timestamp}] Mendapatkan ${h.part.nama}")
         }
     }
 
