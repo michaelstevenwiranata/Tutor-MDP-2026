@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.minggu3.databinding.ItemStudentBinding
 
 class StudentAdapter(
-    private val students: List<Student>,
+    private var students: MutableList<Student>,
     private val onItemClick: (Student) -> Unit
 ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
@@ -38,5 +38,11 @@ class StudentAdapter(
     }
 
     override fun getItemCount(): Int = students.size
+
+    // Memperbarui data list dan memberitahu RecyclerView untuk re-render
+    fun updateList(newList: List<Student>) {
+        students = newList.toMutableList()
+        notifyDataSetChanged()
+    }
 }
 
