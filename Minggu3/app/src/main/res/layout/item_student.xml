@@ -30,7 +30,7 @@
                 android:layout_height="48dp"
                 android:background="@drawable/bg_circle"
                 android:gravity="center"
-                android:text="@{student.name.substring(0, 1)}"
+                android:text="@{student.initials}"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
