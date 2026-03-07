@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
         // Seed MockDatabase dengan data awal
         MockDatabase.seed()
 
-        // Instance StudentAdapter dengan data dari MockDatabase
-        adapter = StudentAdapter(MockDatabase.getAll().toMutableList()) { student ->
+        // Instance StudentAdapter (ListAdapter tidak perlu list di constructor)
+        adapter = StudentAdapter { student ->
             Toast.makeText(
                 this,
                 "${student.name} (${student.initials}) — ${student.major}",
@@ -53,6 +53,8 @@ class MainActivity : AppCompatActivity() {
         // Hubungkan Adapter ke RecyclerView
         binding.rvStudents.adapter = adapter
 
+        // Submit data awal ke ListAdapter
+        adapter.submitList(MockDatabase.getAll())
         updateCount(MockDatabase.count())
 
         // ===========================================
@@ -128,7 +130,9 @@ class MainActivity : AppCompatActivity() {
     private fun applySearchFilter() {
         val query = binding.etSearch.text.toString().trim()
         val filtered = MockDatabase.searchByName(query)
-        adapter.updateList(filtered)
+        // submitList() adalah method dari ListAdapter —
+        // secara otomatis menghitung diff dan hanya update item yang berubah
+        adapter.submitList(filtered)
         updateCount(filtered.size)
     }
 

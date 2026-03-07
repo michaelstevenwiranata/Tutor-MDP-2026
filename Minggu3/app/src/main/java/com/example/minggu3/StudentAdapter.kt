@@ -2,14 +2,53 @@ package com.example.minggu3
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minggu3.databinding.ItemStudentBinding
 
+/**
+ * StudentAdapter — Menggunakan ListAdapter + DiffUtil.
+ *
+ * ListAdapter adalah subclass dari RecyclerView.Adapter yang sudah built-in
+ * support untuk menghitung perbedaan (diff) antara list lama dan list baru
+ * secara otomatis di background thread menggunakan DiffUtil.
+ *
+ * Keuntungan dibanding RecyclerView.Adapter biasa:
+ *   - Tidak perlu manual notifyDataSetChanged() (yang me-refresh SELURUH list)
+ *   - Hanya item yang berubah yang di-update → lebih efisien & ada animasi
+ *   - Tidak perlu menyimpan list sendiri (ListAdapter menyimpannya internal)
+ *   - Cukup panggil submitList(newList) untuk memperbarui data
+ */
 class StudentAdapter(
-    private var students: MutableList<Student>,
     private val onItemClick: (Student) -> Unit
-) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
+) : ListAdapter<Student, StudentAdapter.StudentViewHolder>(StudentDiffCallback()) {
 
+    /**
+     * DiffUtil.ItemCallback — Digunakan oleh ListAdapter untuk menentukan
+     * apakah dua item sama atau berbeda.
+     *
+     * areItemsTheSame  → Cek apakah item yang sama (biasanya by ID/unique key).
+     *                     Digunakan untuk mendeteksi apakah item dipindah/dihapus.
+     * areContentsTheSame → Cek apakah isi/konten item berubah.
+     *                      Digunakan untuk mendeteksi apakah item perlu di-rebind.
+     */
+    class StudentDiffCallback : DiffUtil.ItemCallback<Student>() {
+        override fun areItemsTheSame(oldItem: Student, newItem: Student): Boolean {
+            // NRP adalah unique identifier untuk setiap mahasiswa
+            return oldItem.nrp == newItem.nrp
+        }
+
+        override fun areContentsTheSame(oldItem: Student, newItem: Student): Boolean {
+            // data class otomatis men-generate equals() berdasarkan semua properties
+            return oldItem == newItem
+        }
+    }
+
+    /**
+     * ViewHolder — Menyimpan referensi ke View untuk satu item.
+     * Menggunakan Data Binding (ItemStudentBinding).
+     */
     inner class StudentViewHolder(
         private val binding: ItemStudentBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -34,15 +73,11 @@ class StudentAdapter(
     }
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
-        holder.bind(students[position])
+        // getItem() disediakan oleh ListAdapter — mengambil item dari internal list
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int = students.size
-
-    // Memperbarui data list dan memberitahu RecyclerView untuk re-render
-    fun updateList(newList: List<Student>) {
-        students = newList.toMutableList()
-        notifyDataSetChanged()
-    }
+    // NOTE: Tidak perlu override getItemCount() — ListAdapter sudah handle otomatis.
+    // NOTE: Tidak perlu fungsi updateList() — cukup panggil submitList(newList) dari luar.
 }
 
