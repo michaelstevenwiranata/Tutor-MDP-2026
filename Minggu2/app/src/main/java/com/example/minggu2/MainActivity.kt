@@ -2,6 +2,7 @@ package com.example.minggu2
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,9 +26,15 @@ class MainActivity : AppCompatActivity() {
         binding.btnMenu1.setOnClickListener {
             val nama = binding.etNamaPet.text.toString()
             if (nama.isNotEmpty()) {
-                val intent = Intent(this, Menu1Activity::class.java)
-                intent.putExtra("EXTRA_NAMA", nama) // Mengirim data String
-                startActivity(intent)
+                val namaList = nama.split(",")
+                Log.d("haloo", namaList.toString())
+                if(namaList.size >= 5){
+                    val intent = Intent(this, Menu1Activity::class.java)
+                    intent.putExtra("EXTRA_NAMA", namaList.joinToString("")) // Mengirim data String
+                    startActivity(intent)
+                } else{
+                    Toast.makeText(this, "Panjang nama minimal 5 ya!", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(this, "Isi nama pet dulu ya!", Toast.LENGTH_SHORT).show()
             }
@@ -36,9 +43,14 @@ class MainActivity : AppCompatActivity() {
         binding.btnMenu2.setOnClickListener {
             val nama = binding.etNamaPet.text.toString()
             if (nama.isNotEmpty()) {
-                val intent = Intent(this, Menu2Activity::class.java)
-                intent.putExtra("EXTRA_NAMA", nama)
-                startActivity(intent)
+                val namaList = nama.split(",")
+                if(namaList.size >= 5) {
+                    val intent = Intent(this, Menu2Activity::class.java)
+                    intent.putExtra("EXTRA_NAMA", namaList.joinToString(""))
+                    startActivity(intent)
+                } else{
+                    Toast.makeText(this, "Panjang nama minimal 5 ya!", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(this, "Isi nama pet dulu ya!", Toast.LENGTH_SHORT).show()
             }
