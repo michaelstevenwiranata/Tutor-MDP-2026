@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF0F5"> <!-- Warna background Pink Pastel Imut -->
+
+    <TextView
+        android:id="@+id/tvEmojiCover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🥺"
+        android:textSize="100sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvJudulCover"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvJudulCover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Excuse Generator"
+        android:textColor="#FF69B4"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvSubCover"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmojiCover" />
+
+    <TextView
+        android:id="@+id/tvSubCover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Kumpulan Alasan Telat Kuliah Terampuh"
+        android:textColor="#707070"
+        app:layout_constraintBottom_toTopOf="@+id/btnMulai"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvJudulCover" />
+
+    <Button
+        android:id="@+id/btnMulai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#FFB6C1"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="12dp"
+        android:text="Mulai Cari Alasan ✨"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubCover" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

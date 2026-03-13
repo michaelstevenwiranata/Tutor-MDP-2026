@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="#FFF0F5">
+
+    <TextView
+        android:id="@+id/tvFormJudul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Form Alasan 📝"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etJudul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="Judul Alasan"
+        app:layout_constraintTop_toBottomOf="@+id/tvFormJudul" />
+
+    <TextView
+        android:id="@+id/tvLabelTipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Tipe Alasan (Emoji):"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etJudul" />
+
+    <!-- SPINNER -->
+    <Spinner
+        android:id="@+id/spinnerTipe"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/btn_dropdown"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelTipe" />
+
+    <EditText
+        android:id="@+id/etDeskripsi"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:gravity="top|start"
+        android:hint="Deskripsi Singkat"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTipe" />
+
+    <TextView
+        android:id="@+id/tvLabelRisiko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Tingkat Risiko:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDeskripsi" />
+
+    <!-- RADIO GROUP -->
+    <RadioGroup
+        android:id="@+id/rgRisiko"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelRisiko">
+
+        <RadioButton
+            android:id="@+id/rbAman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aman" />
+
+        <RadioButton
+            android:id="@+id/rbBahaya"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bahaya" />
+
+        <RadioButton
+            android:id="@+id/rbKritis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kritis" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnSimpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#FF69B4"
+        android:text="Simpan Alasan ✨"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/rgRisiko" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
