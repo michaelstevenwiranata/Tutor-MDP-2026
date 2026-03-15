@@ -11,186 +11,103 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <!-- Header -->
-        <TextView
-            android:id="@+id/tvHeader"
+        <EditText
+            android:id="@+id/etSearch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#6750A4"
-            android:padding="20dp"
-            android:text="@string/header_title"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/search_by_name"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:padding="10dp"
+            android:autofillHints=""
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Insert Section -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilName"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="4dp"
-            android:hint="Name"
-            app:layout_constraintEnd_toStartOf="@id/tilNrp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvHeader">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="13sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilNrp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="16dp"
-            android:hint="NRP"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tilName"
-            app:layout_constraintTop_toTopOf="@id/tilName">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etNrp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="13sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilMajor"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
-            android:hint="Major"
-            app:layout_constraintEnd_toStartOf="@id/btnInsert"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilName">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etMajor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="13sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnInsert"
+        <TextView
+            android:id="@+id/tvSortBy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="Insert"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@id/tilMajor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tilMajor" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/sort_by"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etSearch" />
 
-        <!-- Search Bar -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilSearch"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        <Spinner
+            android:id="@+id/spSortBy"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
-            android:hint="Search by name..."
-            app:startIconDrawable="@android:drawable/ic_menu_search"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvSortBy"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilMajor">
+            app:layout_constraintStart_toEndOf="@id/tvSortBy" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etSearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="13sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Sort Buttons -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSortNameAsc"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        <TextView
+            android:id="@+id/tvSortOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Name ↑"
-            android:textSize="11sp"
+            android:text="@string/sort_order"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilSearch" />
+            app:layout_constraintTop_toBottomOf="@id/spSortBy" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSortNameDesc"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/spSortOrder"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="Name ↓"
-            android:textSize="11sp"
-            app:layout_constraintStart_toEndOf="@id/btnSortNameAsc"
-            app:layout_constraintTop_toTopOf="@id/btnSortNameAsc" />
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvSortOrder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvSortOrder" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSortNrpAsc"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="NRP ↑"
-            android:textSize="11sp"
-            app:layout_constraintStart_toEndOf="@id/btnSortNameDesc"
-            app:layout_constraintTop_toTopOf="@id/btnSortNameAsc" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSortNrpDesc"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="NRP ↓"
-            android:textSize="11sp"
-            app:layout_constraintStart_toEndOf="@id/btnSortNrpAsc"
-            app:layout_constraintTop_toTopOf="@id/btnSortNameAsc" />
-
-        <!-- Student count -->
         <TextView
             android:id="@+id/tvCount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:paddingHorizontal="16dp"
             android:paddingVertical="4dp"
-            android:textSize="14sp"
             android:textColor="#666666"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnSortNameAsc"
+            app:layout_constraintTop_toBottomOf="@id/spSortOrder"
             tools:text="Showing 10 students" />
 
-        <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvStudents"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:paddingTop="4dp"
-            android:paddingBottom="16dp"
+            android:paddingBottom="88dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvCount" />
+
+        <ImageButton
+            android:id="@+id/fabAdd"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_circle"
+            android:contentDescription="@string/add_student"
+            android:padding="16dp"
+            android:src="@android:drawable/ic_input_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@android:color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

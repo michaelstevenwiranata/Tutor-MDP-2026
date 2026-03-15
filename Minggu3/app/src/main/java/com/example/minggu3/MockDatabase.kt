@@ -22,16 +22,19 @@ object MockDatabase {
 
         students.addAll(
             listOf(
-                Student("Yoga Pramana", "222117068", "Software Technology"),
-                Student("Michael Steven", "222117047", "Intelligence System"),
+                Student("Yoga Pramana Syahputra Teguh", "222117068", "Software Technology"),
+                Student("Michael Steven Wiranata", "222117047", "Intelligence System"),
                 Student("William Sugiarto", "222117067", "Software Technology"),
                 Student("Gregorius Kendick", "222117024", "Intelligence System"),
                 Student("Darren Susanto", "223180572", "Computer Science"),
                 Student("Albobus Kerenus", "222117003", "Intelligence System"),
-                Student("Ryu Alvino", "222117060", "Software Technology"),
+                Student("Ryu Alvino Hartono", "222117060", "Software Technology"),
                 Student("Albert Manzo", "225117147", "Informatics"),
-                Student("Welly Chandra", "225117194", "Informatics"),
-                Student("Jason Tungary", "225117195", "Informatics"),
+                Student("Welly Chandra Sutrisno", "225117194", "Informatics"),
+                Student("Yohanes Pembaptis Jason Tungary", "225117195", "Informatics"),
+                Student("Trevis Artagrantdy Kurniawan", "223117114", "Computer Science"),
+                Student("Vincentius Jason Tjendika", "223117115", "Computer Science"),
+                Student("William Fabian Setiadi", "225180606", "Business Information System"),
             )
         )
     }
@@ -91,4 +94,3 @@ object MockDatabase {
      */
     fun count(): Int = students.size
 }
-

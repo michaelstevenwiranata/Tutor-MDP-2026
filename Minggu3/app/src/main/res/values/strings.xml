@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Minggu3</string>
     <string name="header_title">📋 Student Directory</string>
+
+    <string name="search_by_name">Search by name</string>
+    <string name="sort_by">Sort by</string>
+    <string name="sort_order">Sort order</string>
+    <string name="add_student">Add student</string>
+    <string name="showing_students">Showing %1$d students</string>
+
+    <string name="add_new_student">Add New Student</string>
+    <string name="name">Name</string>
+    <string name="nrp">NRP</string>
+    <string name="major">Major</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
 </resources>
