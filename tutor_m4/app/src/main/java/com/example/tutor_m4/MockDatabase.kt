@@ -31,4 +31,15 @@ object MockDatabase {
     fun addMahasiswa(mahasiswa: Mahasiswa) {
         mahasiswaList.add(mahasiswa)
     }
+
+    fun editMahasiswa(mahasiswa: Mahasiswa) {
+        val index = mahasiswaList.indexOfFirst { it.nrp == mahasiswa.nrp }
+        if (index != -1) {
+            mahasiswaList[index] = mahasiswa
+        }
+    }
+
+    fun deleteMahasiswa(mahasiswa: Mahasiswa) {
+        mahasiswaList.remove(mahasiswa)
+    }
 }

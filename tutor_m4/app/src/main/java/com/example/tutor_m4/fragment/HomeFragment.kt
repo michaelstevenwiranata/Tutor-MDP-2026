@@ -13,6 +13,7 @@ import com.example.tutor_m4.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
+    private lateinit var adapter: MahasiswaAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,17 +26,26 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = MahasiswaAdapter { mahasiswa ->
+         adapter = MahasiswaAdapter ({ mahasiswa ->
 
             val action = HomeFragmentDirections
                 .actionHomeFragmentToBiodataFragment(mahasiswa)
 
             findNavController().navigate(action)
-        }
 
+        },
+            { mahasiswa ->
+                val action = HomeFragmentDirections.actionHomeFragmentToAddMahasiswaFragment(mahasiswa)
+
+                findNavController().navigate(action)
+            },
+            { mahasiswa ->
+                MockDatabase.deleteMahasiswa(mahasiswa)
+                adapter.notifyDataSetChanged()})
         binding.rvMahasiswa.adapter = adapter
         binding.rvMahasiswa.layoutManager = LinearLayoutManager(requireContext())
 
         adapter.submitList(MockDatabase.getMahasiswa())
     }
+
 }

@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.tutor_m4.Mahasiswa
 import com.example.tutor_m4.R
 import com.example.tutor_m4.databinding.FragmentAddMahasiswaBinding
+import kotlin.getValue
 
 class AddMahasiswaFragment : Fragment() {
     lateinit var binding : FragmentAddMahasiswaBinding
+    private val args: AddMahasiswaFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,15 +34,28 @@ class AddMahasiswaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val mahasiswaArgs = args.mahasiswa
+        if (mahasiswaArgs != null) {
+            binding.etNama.setText(mahasiswaArgs.nama)
+            binding.etNRP.setText(mahasiswaArgs.nrp)
+            binding.etJurusan.setText(mahasiswaArgs.jurusan)
+            binding.btnTambah.text = "Update"
+            binding.etNRP.isEnabled = false
+        }
+
         binding.btnTambah.setOnClickListener {
+            val nama = binding.etNama.text.toString()
+            val nrp = binding.etNRP.text.toString()
+            val jurusan = binding.etJurusan.text.toString()
 
-            val mahasiswa = Mahasiswa(
-                binding.etNama.text.toString(),
-                binding.etNRP.text.toString(),
-                binding.etJurusan.text.toString(),
-            )
+            if (mahasiswaArgs != null) {
+                val mahasiswaUpdate = Mahasiswa(nama, nrp, jurusan)
+                MockDatabase.editMahasiswa(mahasiswaUpdate)
+            } else {
+                val mahasiswaBaru = Mahasiswa(nama, nrp, jurusan)
+                MockDatabase.addMahasiswa(mahasiswaBaru)
+            }
 
-            MockDatabase.addMahasiswa(mahasiswa)
             clearForm()
         }
     }

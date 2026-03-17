@@ -8,12 +8,32 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tutor_m4.databinding.ItemMahasiswaBinding
 import com.example.tutor_m4.Mahasiswa
 
-class MahasiswaAdapter (
-    private val onClick: (Mahasiswa) -> Unit
-):
-    ListAdapter<Mahasiswa, MahasiswaAdapter.ViewHolder>(DIFF_CALLBACK) {
+class MahasiswaDiffUtil : DiffUtil.ItemCallback<Mahasiswa>(){
+    override fun areItemsTheSame(
+        oldItem: Mahasiswa,
+        newItem: Mahasiswa
+    ): Boolean {
+        return oldItem.nrp == newItem.nrp
+    }
 
-    inner class ViewHolder(val binding: ItemMahasiswaBinding) :
+    override fun areContentsTheSame(
+        oldItem: Mahasiswa,
+        newItem: Mahasiswa
+    ): Boolean {
+        return oldItem == newItem
+    }
+}
+
+val mahasiswaDiffUtil = MahasiswaDiffUtil()
+
+class MahasiswaAdapter (
+    private val onClick: (Mahasiswa) -> Unit,
+    private val onEditClick: (Mahasiswa) -> Unit,
+    private val onDeleteClick: (Mahasiswa) -> Unit
+):
+    ListAdapter<Mahasiswa, MahasiswaAdapter.ViewHolder>(mahasiswaDiffUtil) {
+
+    class ViewHolder(val binding: ItemMahasiswaBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,23 +54,15 @@ class MahasiswaAdapter (
         holder.binding.txtNama.text = mahasiswa.nama
         holder.binding.txtNRP.text = mahasiswa.nrp
         holder.binding.imgMahasiswa.setImageResource(mahasiswa.foto)
+        holder.binding.btnEdit.setOnClickListener {
+            onEditClick(mahasiswa)
+        }
+        holder.binding.btnDelete.setOnClickListener {
+            onDeleteClick(mahasiswa)
+        }
 
         holder.itemView.setOnClickListener {
             onClick(mahasiswa)
-        }
-    }
-
-    companion object {
-
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Mahasiswa>() {
-
-            override fun areItemsTheSame(oldItem: Mahasiswa, newItem: Mahasiswa): Boolean {
-                return oldItem.nrp == newItem.nrp
-            }
-
-            override fun areContentsTheSame(oldItem: Mahasiswa, newItem: Mahasiswa): Boolean {
-                return oldItem == newItem
-            }
         }
     }
 }

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_biodataFragment"
             app:destination="@id/biodataFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addMahasiswaFragment"
+            app:destination="@id/addMahasiswaFragment" />
     </fragment>
     <fragment
         android:id="@+id/biodataFragment"
@@ -26,5 +29,10 @@
     <fragment
         android:id="@+id/addMahasiswaFragment"
         android:name="com.example.tutor_m4.fragment.AddMahasiswaFragment"
-        android:label="AddMahasiswaFragment" />
+        android:label="AddMahasiswaFragment" >
+        <argument android:name="mahasiswa"
+            app:argType="com.example.tutor_m4.Mahasiswa"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>

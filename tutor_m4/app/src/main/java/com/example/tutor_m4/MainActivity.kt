@@ -1,6 +1,7 @@
 package com.example.tutor_m4
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -31,5 +32,18 @@ class MainActivity : AppCompatActivity() {
 
         // hubungkan bottom navigation dengan navController
         binding.bottomNavigation.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                // Daftar fragment yang ingin menyembunyikan BottomNav
+                R.id.biodataFragment -> {
+                    binding.bottomNavigation.visibility = View.GONE
+                }
+                // Tampilkan kembali di fragment lainnya (seperti Home/List)
+                else -> {
+                    binding.bottomNavigation.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 }
