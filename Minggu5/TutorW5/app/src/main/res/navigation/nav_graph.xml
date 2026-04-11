@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_reaction">
+
+    <!-- ID fragment di sini harus sama persis dengan ID di bottom_nav_menu.xml -->
+    <fragment
+        android:id="@+id/nav_reaction"
+        android:name="com.example.tutorw5.ReactionFragment"
+        android:label="Reactions">
+        <!-- Action untuk navigasi dari Reaction ke Form -->
+        <action
+            android:id="@+id/action_nav_reaction_to_form"
+            app:destination="@id/nav_reaction_form" />
+    </fragment>
+
+    <!-- Menambahkan destinasi fragment form baru -->
+    <fragment
+        android:id="@+id/nav_reaction_form"
+        android:name="com.example.tutorw5.ReactionFormFragment"
+        android:label="Reaction Form">
+        <!-- Argumen untuk identifikasi Edit (kirim ID) atau Add (kirim -1) -->
+        <argument
+            android:name="reactionId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_element"
+        android:name="com.example.tutorw5.ElementFragment"
+        android:label="Elements" />
+
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.tutorw5.LogoutFragment"
+        android:label="Logout" />
+    <action
+        android:id="@+id/action_global_nav_reaction"
+        app:destination="@id/nav_reaction" />
+</navigation>
