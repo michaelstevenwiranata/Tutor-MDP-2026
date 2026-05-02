@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="20dp">
+
+        <!-- Frame Emoji Bulat (Seperti Profile Picture) -->
+        <FrameLayout
+            android:id="@+id/emojiContainer"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/bg_tinder_gradient"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/tvEmoji"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="😍"
+                    android:textSize="32sp" />
+            </androidx.cardview.widget.CardView>
+        </FrameLayout>
+
+        <!-- Nama Pasangan -->
+        <TextView
+            android:id="@+id/tvPasangan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Andi &amp; Budi"
+            android:textColor="#212121"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvSwipeHint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/emojiContainer"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <!-- Hint / Keterangan Kecil -->
+        <TextView
+            android:id="@+id/tvSwipeHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="Tap to see their story ✨"
+            android:textColor="#FD297B"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/emojiContainer"
+            app:layout_constraintTop_toBottomOf="@id/tvPasangan" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

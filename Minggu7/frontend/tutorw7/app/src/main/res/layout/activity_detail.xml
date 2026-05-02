@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/tvDetailEmoji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="😍"
+        android:textSize="80sp"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tvDetailPasangan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pasangan 1 &amp; Pasangan 2"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvDetailAnomali"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tingkat Anomali: Bucin"
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deskripsi Tingkah Unik:"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvDetailDeskripsi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deskripsi panjang di sini..."
+        android:textSize="16sp"
+        android:background="#EEEEEE"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FF655B"
+            android:text="Edit" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Hapus" />
+    </LinearLayout>
+
+</LinearLayout>
